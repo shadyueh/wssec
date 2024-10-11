@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://example.com/wssec"
            targetNamespace="http://example.com/wssec"
-           xmlns="http://example.com/wssec"
            elementFormDefault="qualified"
 >
-    <xs:element name="getPersonRequest">
+    <!-- Define the Person complex type -->
+    <xs:complexType name="Person">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="age" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Define the addPerson request -->
+    <xs:element name="addPersonRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="id" type="xs:int"/>
+                <xs:element name="person" type="tns:Person"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="getPersonResponse">
+    <!-- Define the addPerson response -->
+    <xs:element name="addPersonResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="name" type="xs:string"/>
-                <xs:element name="age" type="xs:int"/>
+                <xs:element name="status" type="xs:string"/>
+                <xs:element name="personId" type="xs:int"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -24,7 +34,7 @@
     <xs:element name="getCityRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="cityId" type="xs:int"/>
+                <xs:element name="name" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

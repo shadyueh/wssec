@@ -15,7 +15,7 @@ public class CityEndpoint {
     @ResponsePayload
     public GetCityResponse getCity(@RequestPayload GetCityRequest request) {
         GetCityResponse response = new GetCityResponse();
-        response.setCityName("New York");
+        response.setCityName(request.getName());
         response.setPopulation(8000000);
         return response;
     }

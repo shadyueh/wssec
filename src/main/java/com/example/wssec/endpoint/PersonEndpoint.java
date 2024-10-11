@@ -1,7 +1,7 @@
 package com.example.wssec.endpoint;
 
-import com.example.wssec.GetPersonRequest;
-import com.example.wssec.GetPersonResponse;
+import com.example.wssec.AddPersonRequest;
+import com.example.wssec.AddPersonResponse;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -13,10 +13,11 @@ public class PersonEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getPersonRequest")
     @ResponsePayload
-    public GetPersonResponse getPerson(@RequestPayload GetPersonRequest request) {
-        GetPersonResponse response = new GetPersonResponse();
-        response.setName("John Doe");
-        response.setAge(30);
+    public AddPersonResponse getPerson(@RequestPayload AddPersonRequest request) {
+        // Logic to add the person
+        AddPersonResponse response = new AddPersonResponse();
+        response.setStatus("Success");
+        response.setPersonId(123);
         return response;
     }
 }
